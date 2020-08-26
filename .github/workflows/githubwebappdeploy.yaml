@@ -35,6 +35,8 @@ jobs:
         
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.1.4
+      with:
+        path: '/home/runner/work/githubactiontest'
                
     # deploy web app using Azure credentials
     - uses: azure/webapps-deploy@v2
