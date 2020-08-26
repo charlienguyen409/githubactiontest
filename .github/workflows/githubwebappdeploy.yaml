@@ -38,6 +38,7 @@ jobs:
       with:
         app-name: 'githubActionsTestCn'
         publish-profile: ${{ secrets.PUBLISH_PROFILE }}
+        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/publish'
 
     # Azure logout 
     - name: logout
