@@ -30,7 +30,7 @@ jobs:
         # Please consider using pushd to change your path
         pushd .
         dotnet build --configuration Release 
-        dotnet publish -c Release -o 
+        dotnet publish -c Release 
         popd
                
     # deploy web app using Azure credentials
