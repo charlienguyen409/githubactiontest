@@ -28,10 +28,10 @@ jobs:
       run: |
         # If your web app project is not located in your repository's root
         # Please consider using pushd to change your path
-        pushd .
+        # pushd .
         dotnet build --configuration Release 
         dotnet publish -c Release 
-        popd
+        # popd
         
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.1.4
