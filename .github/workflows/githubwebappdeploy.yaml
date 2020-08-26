@@ -1,6 +1,10 @@
+
 on: [push]
 
 name: dotnetbuild
+
+env:
+  AZURE_WEBAPP_PACKAGE_PATH: '.'
 
 jobs:
   build-and-deploy:
@@ -25,13 +29,15 @@ jobs:
         # If your web app project is not located in your repository's root
         # Please consider using pushd to change your path
         pushd .
-        dotnet build --configuration Release --output ./output
+        dotnet build --configuration Release 
+        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' 
         popd
                
     # deploy web app using Azure credentials
     - uses: azure/webapps-deploy@v2
       with:
         app-name: 'githubActionsTestCn'
+        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
 
     # Azure logout 
     - name: logout
