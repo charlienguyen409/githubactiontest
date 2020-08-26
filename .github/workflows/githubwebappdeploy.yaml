@@ -32,6 +32,9 @@ jobs:
         dotnet build --configuration Release 
         dotnet publish -c Release 
         popd
+        
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.1.4
                
     # deploy web app using Azure credentials
     - uses: azure/webapps-deploy@v2
@@ -39,7 +42,7 @@ jobs:
         app-name: 'githubActionsTestCn'
         publish-profile: ${{ secrets.PUBLISH_PROFILE }}
         package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/publish'
-
+    
     # Azure logout 
     - name: logout
       run: |
