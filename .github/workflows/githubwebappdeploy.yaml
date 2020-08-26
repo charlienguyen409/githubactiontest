@@ -30,14 +30,14 @@ jobs:
         # Please consider using pushd to change your path
         pushd .
         dotnet build --configuration Release 
-        # dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' 
+        dotnet publish -c Release -o 
         popd
                
     # deploy web app using Azure credentials
     - uses: azure/webapps-deploy@v2
       with:
         app-name: 'githubActionsTestCn'
-        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
+        publish-profile: ${{ secrets.PUBLISH_PROFILE }}
 
     # Azure logout 
     - name: logout
